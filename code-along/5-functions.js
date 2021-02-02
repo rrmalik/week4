@@ -20,7 +20,27 @@ let quotes = [
 // Element.insertAdjacentHTML(position, text)
 // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
 
-window.addEventListener('DOMContentLoaded', function() {
+function appendQuote(quote) {
   let outputElement = document.querySelector('.output')
-  outputElement.insertAdjacentHTML('beforeend', 'Hello!')
-})
+  outputElement.insertAdjacentHTML('beforeend', `
+    <div class="font-bold my-8 text-xl text-blue-300">
+      ${quote}
+    </div>
+  `)
+  }
+
+
+// when the page loads, loop through the quotes and append each to the page
+
+function pageLoaded() {
+  for(let i=0; i<quotes.length; i++) {
+    let quote = quotes[i]
+    appendQuote(quote)
+  }
+}
+
+window.addEventListener('DOMContentLoaded', pageLoaded)
+
+// (1) when the page loads, 
+// (2) loop through the quotes, 
+// (3) append each to the page 
